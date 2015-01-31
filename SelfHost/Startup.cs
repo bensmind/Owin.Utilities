@@ -9,7 +9,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Logging;
 using Owin;
 
-namespace ApiSelfHostTest
+namespace OwinSamples.SelfHost
 {
     public class Startup
     {

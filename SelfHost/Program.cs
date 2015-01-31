@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin.Hosting;
 
-namespace ApiSelfHostTest
+namespace OwinSamples.SelfHost
 {
     class Program
     {
