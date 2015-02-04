@@ -13,6 +13,30 @@ namespace OwinSamples.SelfHost.Controllers
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-        } 
+        }
+
+        // GET api/test/5
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/test
+        public IHttpActionResult Post([FromBody]string value)
+        {
+            return Created(Url.Link("Api", new {controller = "test", id="5"}), value);
+        }
+
+        // PUT api/test/5
+        public IHttpActionResult Put(int id, [FromBody]string value)
+        {
+            return Ok();
+        }
+
+        // DELETE api/test/5
+        public void Delete(int id)
+        {
+            //returns 204 No Content see: http://stackoverflow.com/a/2342589/2884192
+        }
     }
 }

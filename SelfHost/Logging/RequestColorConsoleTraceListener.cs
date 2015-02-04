@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,13 +24,30 @@ namespace OwinSamples.SelfHost.Logging
             WritePath(pieces[1]);
             WriteStatus(pieces[2]);
             WriteElapsed(pieces[3]);
-            base.WriteLine("");
             Console.ResetColor();
         }
 
         private void WriteMethod(string raw)
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            switch (raw)
+            {
+                case "GET":
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    break;
+                case "POST":
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case "PUT":
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    break;
+                case "DELETE":
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+            }
+
             base.Write(raw + " ");
         }
 
@@ -86,7 +104,7 @@ namespace OwinSamples.SelfHost.Logging
                     case HttpStatusCode.RequestedRangeNotSatisfiable:
                     case HttpStatusCode.ExpectationFailed:
                     case HttpStatusCode.UpgradeRequired:
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         break;
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotImplemented:
@@ -109,7 +127,7 @@ namespace OwinSamples.SelfHost.Logging
         private void WriteElapsed(string raw)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            base.Write(raw + " ");
+            base.WriteLine(raw + " ");
         }
     }
 }
