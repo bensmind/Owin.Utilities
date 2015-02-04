@@ -14,13 +14,16 @@ namespace OwinSamples.SelfHost
         {
             if (args.Length < 1)
             {
-                Console.WriteLine("Server url must be specified");
+                Console.WriteLine("A url must be specified");
                 return 1;
             }
+            
             var url = args[0];
 
             var host = WebApp.Start<Startup>(url);
-            Trace.WriteLine(string.Format("Web server started @ {0}", url));
+
+            Trace.WriteLine("Web server started");
+            Trace.WriteLine(string.Format("Listening on: {0}", url));
 
             Console.ReadLine();
             Trace.WriteLine("Halt requested");

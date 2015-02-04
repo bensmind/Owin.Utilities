@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Logging\LogRequestMiddleware.cs" />
+    <Compile Include="Logging\RequestColorConsoleTraceListener.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

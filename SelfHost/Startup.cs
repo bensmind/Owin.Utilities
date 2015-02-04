@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Logging;
 using Owin;
+using OwinSamples.SelfHost.Logging;
 
 namespace OwinSamples.SelfHost
 {
@@ -27,38 +29,6 @@ namespace OwinSamples.SelfHost
 
             appBuilder.LogRequests("Api");
             appBuilder.UseWebApi(config);
-        }
-    }
-
-    public static class LogRequestMiddlewareExtensions
-    {
-        public static void LogRequests(this IAppBuilder appBuilder, string label)
-        {
-            appBuilder.Use<LogRequestMiddleware>(appBuilder, label);
-        }
-    }
-
-    public class LogRequestMiddleware : OwinMiddleware
-    {
-        private readonly ILogger _logger;
-
-        public LogRequestMiddleware(OwinMiddleware next, IAppBuilder app, string label) 
-            : base(next)
-        {
-            _logger = app.CreateLogger(label);            
-        }
-
-        public override async Task Invoke(IOwinContext context)
-        {
-            await Next.Invoke(context);
-
-            var message = string.Format("{0} {1}: {2} {3}",
-                context.Request.Scheme,
-                context.Request.Method,
-                context.Response.StatusCode,
-                context.Request.Path);
-
-            _logger.WriteVerbose(message);
         }
     }
 }
