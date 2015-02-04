@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace OwinSamples.SelfHost.Controllers
+namespace OwinSamples.SelfHost.WebApi.Controllers
 {
     public class TestController : ApiController
     {

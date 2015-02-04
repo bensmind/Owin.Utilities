@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Microsoft.Owin;
-using Microsoft.Owin.Logging;
 using Owin;
-using OwinSamples.SelfHost.Logging;
+using OwinSamples.SelfHost.WebApi.Logging;
 
-namespace OwinSamples.SelfHost
+namespace OwinSamples.SelfHost.WebApi
 {
     public class Startup
     {

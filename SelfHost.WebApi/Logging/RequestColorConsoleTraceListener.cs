@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OwinSamples.SelfHost.Logging
+namespace OwinSamples.SelfHost.WebApi.Logging
 {
     /// <summary>
     /// Color format and parameters intended to generally follow the expressjs morgan logger https://github.com/expressjs/morgan

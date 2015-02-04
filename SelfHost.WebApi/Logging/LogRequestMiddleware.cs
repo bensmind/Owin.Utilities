@@ -8,7 +8,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Logging;
 using Owin;
 
-namespace OwinSamples.SelfHost.Logging
+namespace OwinSamples.SelfHost.WebApi.Logging
 {
     public static class LogRequestMiddlewareExtensions
     {

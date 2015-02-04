@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin.Hosting;
 
-namespace OwinSamples.SelfHost
+namespace OwinSamples.SelfHost.WebApi
 {
     class Program
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{25AEFBD7-2696-4667-9E7D-4E390C839628}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OwinSamples.SelfHost</RootNamespace>
-    <AssemblyName>OwinSamples.SelfHost</AssemblyName>
+    <RootNamespace>OwinSamples.SelfHost.WebApi</RootNamespace>
+    <AssemblyName>OwinSamples.SelfHost.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
