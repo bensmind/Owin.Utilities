@@ -12,18 +12,12 @@ namespace OwinSamples.SelfHost.WebApi
     {
         static int Main(string[] args)
         {
-            if (args.Length < 1)
-            {
-                Console.WriteLine("A url must be specified");
-                return 1;
-            }
-            
-            var url = args[0];
-
-            var host = WebApp.Start<Startup>(url);
+            var url = args.Length > 0 ? args[0] : null;
+            var uri = ReadUrl(url);
+            var host = WebApp.Start<Startup>(uri.AbsoluteUri);
 
             Trace.WriteLine("Web server started");
-            Trace.WriteLine(string.Format("Listening on: {0}", url));
+            Trace.WriteLine(string.Format("Listening on: {0}", uri.AbsoluteUri));
 
             Console.ReadLine();
             Trace.WriteLine("Halt requested");
@@ -32,6 +26,29 @@ namespace OwinSamples.SelfHost.WebApi
             Trace.WriteLine("Web server disposed");
 
             return 0;
+        }
+
+        static Uri ReadUrl(string input = null)
+        {
+            string url;
+            if (input != null)
+            {
+                url = input;
+            }
+            else
+            {
+                Console.WriteLine("Please specify a url (i.e. http://localhost:3000) for the server, or Ctrl+C to exit");
+                url = Console.ReadLine();
+            }
+            //Validate
+            Uri uri; 
+            if (string.IsNullOrWhiteSpace(url) || !Uri.TryCreate(url, UriKind.Absolute, out uri))
+            {
+                //Reprompt
+                Console.WriteLine("A valid url must be specified");
+                uri = ReadUrl();
+            }
+            return uri;
         }
     }
 }
